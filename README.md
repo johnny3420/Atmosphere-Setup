@@ -1,10 +1,10 @@
 # Atmosphere-Setup
 
-##nstallation notes for Maloof-Biof v10
+## Installation notes for Maloof-Biof v10
 
-###start with image "Ubuntu 14.04.2 XFCE Base"
+### start with image "Ubuntu 14.04.2 XFCE Base"
 
-###General installs
+### General installs
 
 ```
 apt-get update
@@ -113,3 +113,18 @@ nano inc/common.mk #Change BINDIR=${HOME}/bin/${MACHTYPE} to BINDIR=/usr/local/b
 make
 ```
 
+### cufflinks
+
+```
+
+cd /usr/Bio_Packages
+wget http://cole-trapnell-lab.github.io/cufflinks/assets/downloads/cufflinks-2.2.1.Linux_x86_64.tar.gz
+tar -xvzf cufflinks-2.2.1.Linux_x86_64.tar.gz
+cd /usr/bin
+cp -sf ../Bio_Packages/cufflinks-2.2.1.Linux_x86_64/cuff* ./
+cp -sf ../Bio_Packages/cufflinks-2.2.1.Linux_x86_64/g* ./
+```
+
+### fastQC
+
+```
