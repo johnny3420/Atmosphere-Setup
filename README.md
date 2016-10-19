@@ -128,3 +128,7 @@ cp -sf ../Bio_Packages/cufflinks-2.2.1.Linux_x86_64/g* ./
 ### fastQC
 
 ```
+
+
+
+
