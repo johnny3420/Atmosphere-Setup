@@ -2,6 +2,8 @@
 
 ## Installation notes for Maloof-Biof v10
 
+## All programs are the most update versions at time of creation
+
 ### start with image "Ubuntu 14.04.2 XFCE Base"
 
 ### General installs
@@ -20,10 +22,8 @@ apt-get install bioperl
 #note this installed lots of bioinf packages including bwa, bowtie, hmmer, miscule, mafft, tcoffee, and much more
 apt-get install openmpi-bin libopenmpi-dev
 apt-get install ncbi-blast+ ncbi-blast+-legacy
-apt-get install mysql-client mysql-server #password = "34..." with first letters capitilized
+apt-get install mysql-client mysql-server #password = Bioinformatics
 apt-get install eclipse
-apt-get install picard-tools
-apt-get install velvet velvet-example
 apt-get install libcurl4-openssl-dev #needed for bioconductor 
 apt-get install libgl1-mesa-dev #for rgl
 apt-get install libglu1-mesa-dev #for rgl
@@ -34,8 +34,7 @@ apt-get install git
 ### R (3.3.1)
 
 ```
-nano /etc/apt/sources.list
-deb https://<my.favorite.cran.mirror>/bin/linux/ubuntu trusty/ ## Add this line
+echo 'deb https://cran.cnr.berkeley.edu/bin/linux/ubuntu trusty/' >> /etc/apt/sources.list
 apt-get update
 apt-get install r-base
 apt-get install r-base-dev
@@ -63,7 +62,7 @@ biocLite("BiocUpgrade")
 sudo apt-get install gdebi-core
 wget https://download2.rstudio.org/rstudio-server-0.99.903-amd64.deb
 sudo gdebi rstudio-server-0.99.903-amd64.deb
-mv rstudio-server-0.99.903-amd64.deb /usr/Bio_Packages
+mv rstudio-server-0.99.903-amd64.deb /usr/local/src
 ```
 
 ### BWA
@@ -71,11 +70,11 @@ mv rstudio-server-0.99.903-amd64.deb /usr/Bio_Packages
 
 ```
 sudo apt-get remove bwa
-cd /usr/Bio_Packages
+cd /usr/local/src
 git clone https://github.com/lh3/bwa.git
 cd bwa; make
-cd /usr/bin
-ln -s /usr/Bio_Packages/bwa/bwa
+cd /usr//local/bin
+ln -s /usr/local/src/bwa/bwa
 ```
 
 ### Bowtie
@@ -83,33 +82,33 @@ ln -s /usr/Bio_Packages/bwa/bwa
 
 ```
 apt-get remove bowtie
-cd /usr/Bio_Packages
+cd /usr/local/src
 wget https://downloads.sourceforge.net/project/bowtie-bio/bowtie/1.1.2/bowtie-1.1.2-linux-x86_64.zip
 unzip bowtie-1.1.2-linux-x86_64.zip
-cd /usr/bin
-ln -sf ../Bio_Packages/bowtie-1.1.2/bowtie ./
+cd /usr/local/bin
+ln -sf ../src/bowtie-1.1.2/bowtie ./
 ```
 
 ### Bowtie2
 
 ```
-cd /usr/Bio_Packages
+cd /usr/local/src
 wget https://downloads.sourceforge.net/project/bowtie-bio/bowtie2/2.2.9/bowtie2-2.2.9-linux-x86_64.zip
 unzip bowtie2-2.2.9-linux-x86_64.zip
-cd /usr/bin
-cp -sf ../Bio_Packages/bowtie2-2.2.9/bowtie2* ./
+cd /usr/local/bin
+cp -sf ../src/bowtie2-2.2.9/bowtie2* ./
 ```
 
 ### blat
 
 ```
-cd /usr/Bio_Packaages
-unzip blatSrc35.zip
-cd /usr/bin
+cd /usr/local/src
 wget https://users.soe.ucsc.edu/~kent/src/blatSrc35.zip
 unzip blatSrc35.zip
 cd blatSrc
 nano inc/common.mk #Change BINDIR=${HOME}/bin/${MACHTYPE} to BINDIR=/usr/local/bin
+MACHTYPE=x86_64
+export MACHTYPE
 make
 ```
 
@@ -117,18 +116,54 @@ make
 
 ```
 
-cd /usr/Bio_Packages
+cd /usr/local/src
 wget http://cole-trapnell-lab.github.io/cufflinks/assets/downloads/cufflinks-2.2.1.Linux_x86_64.tar.gz
 tar -xvzf cufflinks-2.2.1.Linux_x86_64.tar.gz
-cd /usr/bin
-cp -sf ../Bio_Packages/cufflinks-2.2.1.Linux_x86_64/cuff* ./
-cp -sf ../Bio_Packages/cufflinks-2.2.1.Linux_x86_64/g* ./
+cd /usr/local/bin
+cp -sf ../src/cufflinks-2.2.1.Linux_x86_64/cuff* ./
+cp -sf ../src/cufflinks-2.2.1.Linux_x86_64/g* ./
 ```
 
 ### fastQC
 
 ```
+cd /usr/local/src
+wget www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.11.5.zip
+cd FastQC/
+chmod 0755 fastqc
+cd /usr/local/bin
+cp -s ../src/FastQC/fastqc ./
+```
 
+### Update Java, some programs require 1.8
 
+```
+add-apt-repository ppa:openjdk-r/ppa
+sudo apt-get update
+sudo apt-get install openjdk-8-jdk
+#Setting/confirming Java 8 as default
+sudo update-alternatives --config java ## select java-8
+sudo update-alternatives --config javac ## select java-8
+java -version
+```
 
+### GATK 3.6 
+Download from http://www.broadinstitute.org/gatk/
 
+```
+cd /usr/local/src
+mkdir GenomeAnalysisTK
+mv ~/GenomeAnalysisTK-3.4-46.tar.bz2 /usr/local/src/GenomeAnalysisTK
+cd GenomeAnalysisTK
+bunzip2 GenomeAnalysisTK-3.6.tar.bz2
+tar -xvf GenomeAnalysisTK-3.6.tar
+cd /usr/local/bin
+### created sh called GenomeAnalysisTK with chmod 755 
+### allows GenomeAnalysisTK to be invoked without including "java -jar /path/to/GenomeAnalysisTK"
+```
+
+### IGV
+
+```
+cd /usr/local/src
+wget data.broadinstitute.org/igv/projects/downloads/IGV_2.3.83.zip
