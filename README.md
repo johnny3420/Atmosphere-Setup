@@ -159,7 +159,7 @@ bunzip2 GenomeAnalysisTK-3.6.tar.bz2
 tar -xvf GenomeAnalysisTK-3.6.tar
 cd /usr/local/bin
 ### created sh called GenomeAnalysisTK with chmod 755 
-### allows GenomeAnalysisTK to be invoked without including "java -jar /path/to/GenomeAnalysisTK"
+### allows GenomeAnalysisTK to be invoked without including "java -jar /path/to/GenomeAnalysisTK.jar"
 ```
 
 ### IGV
@@ -167,3 +167,49 @@ cd /usr/local/bin
 ```
 cd /usr/local/src
 wget data.broadinstitute.org/igv/projects/downloads/IGV_2.3.83.zip
+unzip IGV_2.3.83.zip
+cd /usr/local/bin
+cp -sf ../src/IGV_2.3.83/igv.sh ./
+### created sh called igv with chmod 755 
+### allows igv to be invoked without including "java -jar /path/to/igv.jar"
+```
+
+### Trinity
+
+```
+cd /usr/local/src
+wget https://github.com/trinityrnaseq/trinityrnaseq/archive/v2.2.0.tar.gz
+tar -xvf v2.2.0.tar.gz
+cd trinityrnaseq-2.2.0/
+make
+make plugins
+cd /usr/local/bin
+ln -s /usr/local/src/trinityrnaseq-2.2.0/Trinity
+```
+
+### lastz
+
+```
+wget http://www.bx.psu.edu/miller_lab/dist/lastz-1.02.00.tar.gz
+tar -xvzf lastz-1.02.00.tar.gz
+cd lastz-distrib-1.02.00/
+### edit make-include.mak to set LASTZ_INSTALL="/usr/local/src/lastz-distrib-1.02.00/bin/" 
+### edit src/Makefile to remove -Werror compile flag
+make
+make install
+cd /usr/local/bin
+cp -s ../src/lastz-distrib-1.02.00/bin/lastz* ./
+```
+
+### orthomcl
+
+### tophat
+
+```
+cd /usr/local/src
+sudo -s
+wget https://ccb.jhu.edu/software/tophat/downloads/tophat-2.1.1.Linux_x86_64.tar.gz
+tar xvfz tophat-2.1.1.Linux_x86_64.tar.gz
+cd ../bin
+ln -s /usr/local/src/tophat-2.1.1.Linux_x86_64/tophat* ./
+```
