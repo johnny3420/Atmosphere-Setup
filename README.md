@@ -24,7 +24,11 @@ apt-get install openmpi-bin libopenmpi-dev
 apt-get install ncbi-blast+ ncbi-blast+-legacy
 apt-get install mysql-client mysql-server #password = Bioinformatics
 apt-get install eclipse
-apt-get install libcurl4-openssl-dev #needed for bioconductor 
+apt-get install libcurl4-openssl-dev #needed for bioconductor
+apt-get install libboost-iostreams-dev
+apt-get install libgsl0-dev
+apt-get install libmysql++-dev
+apt-get install libboost-graph-dev
 apt-get install libgl1-mesa-dev #for rgl
 apt-get install libglu1-mesa-dev #for rgl
 apt-get install libmysqlclient-dev #for R mysql
@@ -212,4 +216,47 @@ wget https://ccb.jhu.edu/software/tophat/downloads/tophat-2.1.1.Linux_x86_64.tar
 tar xvfz tophat-2.1.1.Linux_x86_64.tar.gz
 cd ../bin
 ln -s /usr/local/src/tophat-2.1.1.Linux_x86_64/tophat* ./
+```
+
+### Cap3
+
+```
+wget seq.cs.iastate.edu/CAP3/cap3.linux.x86_64.tar
+tar -xvf cap3.linux.i686_xeon64.tar
+cd /usr/local/bin
+cp -s ../src/CAP3/cap3 ./
+cp -s ../src/CAP3/formcon ./
+```
+
+### varscan
+
+```
+wget https://downloads.sourceforge.net/project/varscan/VarScan.v2.3.9.jar
+cd /usr/local/bin
+### Create sh called VarScan with chmod 755 for VarScan.v2.3.9.jar
+```
+
+### Satsuma
+
+```
+wget https://archive.broadinstitute.org/ftp/distribution/software/spines/satsuma-3.0.tar.gz
+tar -xvzf satsuma-3.0.tar.gz
+cd /usr/local/bin/
+cp -s ../src/satsuma-code-0/Satsuma* ./
+```
+
+### Smartgit
+
+```
+wget https://www.syntevo.com/static/smart/download/smartgit/smartgit-linux-8_0_3.tar.gz
+tar -xvzf smartgit-linux-8_0_3.tar.gz
+### Made desktop launcher
+```
+
+### SRA toolkit
+```
+wget https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/2.8.0/sratoolkit.2.8.0-ubuntu64.tar.gz
+tar -xvf sratoolkit.2.8.0-ubuntu64.tar.gz
+cd /usr/local/bin
+ln -sf /usr/local/src/sratoolkit.2.8.0-ubuntu64/bin/* ./
 ```
