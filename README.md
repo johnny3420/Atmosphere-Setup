@@ -208,8 +208,15 @@ cp -s ../src/lastz-distrib-1.02.00/bin/lastz* ./
 ### augustus
 
 ```
+cd /usr/local/src
 wget http://bioinf.uni-greifswald.de/augustus/binaries/augustus-3.2.2.tar.gz
 tar -xvzf augustus-3.2.2.tar.gz
+echo 'deb http://us.archive.ubuntu.com/ubuntu vivid main universe' >> /etc/apt/sources.list
+apt-get update
+apt-get install libbamtools-dev
+cd /usr/local/src/augustus-3.2.2
+make
+make install
 ```
 
 ### tophat
@@ -319,19 +326,29 @@ cd /usr/local/bin
 ### circos
 
 ```
+cd /usr/local/src
 wget http://circos.ca/distribution/circos-0.69-3.tgz
 tar -xvzf circos-0.69-3.tgz
+cd circos-0.69-3
+export PATH=/usr/local/src/circos-0.69-3/bin:$PATH
+### In order to use, must put circos.conf file in /etc/
 ```
 
 ### SVDetect
 
 ```
+cd /usr/local/src
 wget http://downloads.sourceforge.net/project/svdetect/SVDetect/0.70/SVDetect_r0.7m.tar.gz
-
+tar -xvzf SVDetect_r0.7m.tar.gz
+cpan Tie::IxHash
+cpan Parallel::ForkManager
+cd /usr/local/bin
+cp -sf ../src/SVDetect/bin/SVDetect ./
 ```
 
 ### orthomcl
 
 ```
-
+cd /usr/local/src
+wget http://orthomcl.org/common/downloads/software/v2.0/orthomclSoftware-v2.0.9.tar.gz
 ```
