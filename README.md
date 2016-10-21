@@ -205,7 +205,12 @@ cd /usr/local/bin
 cp -s ../src/lastz-distrib-1.02.00/bin/lastz* ./
 ```
 
-### orthomcl
+### augustus
+
+```
+wget http://bioinf.uni-greifswald.de/augustus/binaries/augustus-3.2.2.tar.gz
+tar -xvzf augustus-3.2.2.tar.gz
+```
 
 ### tophat
 
@@ -309,4 +314,24 @@ wget https://github.com/broadinstitute/picard/releases/download/2.7.0/picard.jar
 cd /usr/local/bin
 ### created sh called picard with chmod 755 
 ### allows picard to be invoked without including "java -jar /path/to/picard.jar"
+```
+
+### circos
+
+```
+wget http://circos.ca/distribution/circos-0.69-3.tgz
+tar -xvzf circos-0.69-3.tgz
+```
+
+### SVDetect
+
+```
+wget http://downloads.sourceforge.net/project/svdetect/SVDetect/0.70/SVDetect_r0.7m.tar.gz
+
+```
+
+### orthomcl
+
+```
+
 ```
