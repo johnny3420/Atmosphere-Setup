@@ -260,3 +260,53 @@ tar -xvf sratoolkit.2.8.0-ubuntu64.tar.gz
 cd /usr/local/bin
 ln -sf /usr/local/src/sratoolkit.2.8.0-ubuntu64/bin/* ./
 ```
+
+### Samtools
+#### Remove outdate and put newest
+
+```
+apt-get remove samtools
+wget https://github.com/samtools/samtools/releases/download/1.3.1/samtools-1.3.1.tar.bz2
+tar -xvf samtools-1.3.1.tar.bz2
+cd samtools-1.3.1/
+make
+make prefix=/usr/local/src/samtools-1.3.1 install
+export PATH=/usr/local/src/samtools-1.3.1/bin:$PATH
+```
+
+### Bamtools
+
+```
+apt-get install cmake
+cd /usr/local/src
+git clone git://github.com/pezmaster31/bamtools.git
+cd bamtools
+mkdir build
+cd build/
+cmake ..
+make
+cd /usr/local/bin
+ln -sf /usr/local/src/bamtools/bin/bamtools
+```
+
+### Velvet
+
+```
+cd /usr/local/src
+git clone git://github.com/dzerbino/velvet.git
+cd velvet
+make
+make 'MAXKMERLENGTH=75'
+cd /usr/local/bin
+cp -sf ../src/velvet/velvet* ./
+```
+
+### Picard tools
+
+```
+cd /usr/local/src
+wget https://github.com/broadinstitute/picard/releases/download/2.7.0/picard.jar
+cd /usr/local/bin
+### created sh called picard with chmod 755 
+### allows picard to be invoked without including "java -jar /path/to/picard.jar"
+```
