@@ -22,7 +22,7 @@ apt-get install bioperl
 #note this installed lots of bioinf packages including bwa, bowtie, hmmer, miscule, mafft, tcoffee, and much more
 apt-get install openmpi-bin libopenmpi-dev
 apt-get install ncbi-blast+ ncbi-blast+-legacy
-apt-get install mysql-client mysql-server #password = Bioinformatics
+apt-get install mysql-client mysql-server #password for root = Bioinformatics # Also  created account 'user' with password 'Bioinformatics' with all privileges
 apt-get install eclipse
 apt-get install libcurl4-openssl-dev #needed for bioconductor
 apt-get install libboost-iostreams-dev
@@ -350,5 +350,13 @@ cp -sf ../src/SVDetect/bin/SVDetect ./
 
 ```
 cd /usr/local/src
+apt-get insatll mcl
 wget http://orthomcl.org/common/downloads/software/v2.0/orthomclSoftware-v2.0.9.tar.gz
+tar -xvzf orthomclSoftware-v2.0.9.tar.gz
+cd orthomclSoftware-v2.0.9/
+mkdir my_orthomcl_dir
+cp doc/OrthoMCLEngine/Main/orthomcl.config.template my_orthomcl_dir/orthomcl.config
+### created mysql database called orthomcl using `create database orthomcl` inside mysql
+bin/orthomclInstallSchema my_orthomcl_dir/orthomcl.config  my_orthomcl_dir/install_schema.log
+### In order to use orthomcl, the user must input their own data and follow the program's instructions on their own
 ```
