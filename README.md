@@ -360,3 +360,21 @@ cp doc/OrthoMCLEngine/Main/orthomcl.config.template my_orthomcl_dir/orthomcl.con
 bin/orthomclInstallSchema my_orthomcl_dir/orthomcl.config  my_orthomcl_dir/install_schema.log
 ### In order to use orthomcl, the user must input their own data and follow the program's instructions on their own
 ```
+
+### Trimmomatic
+
+```
+cd /usr/local/src
+wget www.usadellab.org/cms/uploads/supplementary/Trimmomatic/Trimmomatic-0.36.zip
+unzip Trimmomatic-0.36.zip
+cd /usr/local/bin
+### created sh called trimmomatic with chmod 755 
+### allows trimmomatic to be invoked without including "java -jar /path/to/trimmomatic.jar"
+```
+
+### STAR
+
+```
+git clone https://github.com/alexdobin/STAR.git
+cp STAR/bin/Linus_x86_64_static/STAR ../bin
+```
