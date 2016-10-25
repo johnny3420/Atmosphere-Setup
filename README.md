@@ -285,7 +285,7 @@ tar -xvf samtools-1.3.1.tar.bz2
 cd samtools-1.3.1/
 make
 make prefix=/usr/local/src/samtools-1.3.1 install
-export PATH=/usr/local/src/samtools-1.3.1/bin:$PATH
+## Added to PATH
 ```
 
 ### Bamtools
@@ -361,6 +361,8 @@ cp doc/OrthoMCLEngine/Main/orthomcl.config.template my_orthomcl_dir/orthomcl.con
 ### created mysql database called orthomcl using `create database orthomcl` inside mysql
 bin/orthomclInstallSchema my_orthomcl_dir/orthomcl.config  my_orthomcl_dir/install_schema.log
 ### In order to use orthomcl, the user must input their own data and follow the program's instructions on their own
+cd /usr/local/bin
+ln -s ../
 ```
 
 ### Trimmomatic
