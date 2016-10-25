@@ -59,7 +59,7 @@ biocLite(c("igraph","WGCNA","lmerTest","Rsubread"))
 biocLite("BiocUpgrade")
 ```
 
-## Placing packages into /usr/Bio_Packages
+## Placing packages into /usr/local/src
 ### R Studio Server
 
 ```
